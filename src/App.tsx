@@ -5,11 +5,11 @@ import { InputField } from "./components/inputField/InputField";
 
 function App() {
   return (
-    <div>
-      <Header>Know Your Customer </Header>
-      <InputField />
-      <Button variant="text">hjkhText</Button>
-    </div>
+    <>
+      <Header>Know Your Customer</Header>
+      <InputField>Find a person</InputField>
+      <InputField>Find a company</InputField>
+    </>
   );
 }
 

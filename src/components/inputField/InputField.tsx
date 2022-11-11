@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import TextField from "@mui/material/TextField";
 
-export const InputField = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export const InputField = ({ children }: Props) => {
   const [userInput, setUserInput] = useState("");
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,7 +15,7 @@ export const InputField = () => {
     <div>
       <TextField
         id="outlined-basic"
-        label="Search for a person"
+        label={children}
         variant="outlined"
         value={userInput}
         onChange={handleUserInput}
