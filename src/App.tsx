@@ -13,7 +13,7 @@ function App() {
   const [company, setCompany] = useState<any>();
   // !!
 
-  const [allPersons, setAllPersons] = useState<any>();
+  const [allPersons, setAllPersons] = useState<any>([]);
   const [allCompanies, setAllCompanies] = useState<any>();
 
   // PROPS OBJECT
@@ -32,7 +32,11 @@ function App() {
       <Header>Know Your Customer</Header>
       <Tabs_Meny />
       <InputField fetchData={fetchData}>Search</InputField>
-      <Display_Result data={data} />
+      <Display_Result
+        data={data}
+        setAllPersons={setAllPersons}
+        allPersons={allPersons}
+      />
     </>
   );
 }
