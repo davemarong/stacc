@@ -19,12 +19,15 @@ function App() {
   const [allCompanies, setAllCompanies] = useState<any>();
 
   // PROPS OBJECT
+  // !! Possibly don't need
   const fetchProps = {
     setPerson: setPerson,
     setCompany: setCompany,
     setAllPersons: setAllPersons,
     setAllCompanies: setAllCompanies,
   };
+  // !!
+
   // CUSTOM HOOK
   const [data, loading, fetchData] = useFetchData(fetchProps);
 
@@ -40,6 +43,7 @@ function App() {
           data={data}
           setAllPersons={setAllPersons}
           allPersons={allPersons}
+          loading={loading}
         />
       </Split_Screen_1to3>
     </>

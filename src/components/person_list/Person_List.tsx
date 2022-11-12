@@ -38,7 +38,7 @@ export const Person_List = ({ allPersons, setAllPersons }: Props) => {
     <Container maxWidth="sm">
       {allPersons.map((item: any) => {
         return (
-          <Card key={item.id}>
+          <Card key={item.id} style={{ margin: "20px 0" }}>
             <CardContent>
               <Typography>{item.name}</Typography>
               <Button
