@@ -1,24 +1,39 @@
-import { useState, useEffect } from "react";
+// IMPORT
+
+// REACT
+import { useState } from "react";
+
+// MUI
+
+// COMPONENTS
+
+// UTILS
+
+// DATA
+import { pepUrl } from "../../constants/constants";
+
+// LIBRARY
 import axios from "axios";
 
+// TYPE/INTERFACE
 interface Props {
-  url: string;
+  query: string;
 }
-
-export const useFetchData = ({ url }: Props) => {
+// FUNCTIONAL COMPONENT
+export const useFetchData = ({ query }: Props) => {
+  // STATE
   const [data, setData] = useState<any>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<any>(false);
 
-  // Functions
-  // ASYNC AWAIT
-  useEffect(() => {
-    (async () => {
-      const response = await axios.get(url);
-      console.log(response.data);
-      setData(response.data);
-      setLoading(false);
-    })();
-  }, []);
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await axios.get(pepUrl + query);
+    console.log(response.data);
+    setData(response.data);
+    setLoading(false);
+  };
+  // FUNCTIONS
 
-  return [data, loading];
+  // RETURN
+  return [data, loading, fetchData];
 };
