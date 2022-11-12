@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 
 type Props = {
   children: ReactNode;
+  fetchData: (query: string) => {};
 };
 
-export const InputField = ({ children }: Props) => {
+export const InputField = ({ children, fetchData }: Props) => {
   const [userInput, setUserInput] = useState("");
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +23,13 @@ export const InputField = ({ children }: Props) => {
         value={userInput}
         onChange={handleUserInput}
       />
-      <Button onClick={handleSearch}>Search</Button>
+      <Button
+        onClick={() => {
+          fetchData(userInput);
+        }}
+      >
+        Search
+      </Button>
     </>
   );
 };

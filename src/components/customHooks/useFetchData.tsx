@@ -17,19 +17,27 @@ import axios from "axios";
 
 // TYPE/INTERFACE
 interface Props {
-  query: string;
+  setPerson: any;
+  setCompany: any;
+  setAllPersons: any;
+  setAllCompanies: any;
 }
 // FUNCTIONAL COMPONENT
-export const useFetchData = ({ query }: Props) => {
+export const useFetchData = ({
+  setPerson,
+  setCompany,
+  setAllPersons,
+  setAllCompanies,
+}: Props) => {
   // STATE
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<any>(false);
 
-  const fetchData = async () => {
+  const fetchData = async (query: string) => {
     setLoading(true);
     const response = await axios.get(pepUrl + query);
     console.log(response.data);
-    setData(response.data);
+    setData(response.data.hits);
     setLoading(false);
   };
   // FUNCTIONS

@@ -4,25 +4,35 @@ import { Header } from "./components/header/Header";
 import { InputField } from "./components/inputField/InputField";
 import { Tabs_Meny } from "./components/tabs_meny/Tabs_Meny";
 import { useFetchData } from "./components/customHooks/useFetchData";
+import { Display_Result } from "./components/display_result/Display_Result";
 
 function App() {
   // STATE
+  // !! Possibly don't need
   const [person, setPerson] = useState<any>();
   const [company, setCompany] = useState<any>();
+  // !!
+
   const [allPersons, setAllPersons] = useState<any>();
   const [allCompanies, setAllCompanies] = useState<any>();
 
+  // PROPS OBJECT
+  const fetchProps = {
+    setPerson: setPerson,
+    setCompany: setCompany,
+    setAllPersons: setAllPersons,
+    setAllCompanies: setAllCompanies,
+  };
   // CUSTOM HOOK
-  const [data, loading, fetchData] = useFetchData({
-    query: "erna solberg",
-  });
+  const [data, loading, fetchData] = useFetchData(fetchProps);
 
   // RETURN
   return (
     <>
       <Header>Know Your Customer</Header>
       <Tabs_Meny />
-      <InputField>Search</InputField>
+      <InputField fetchData={fetchData}>Search</InputField>
+      <Display_Result data={data} />
     </>
   );
 }
