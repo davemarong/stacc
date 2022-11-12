@@ -67,6 +67,11 @@ export const Display_Result = ({
           </TableRow>
         </TableHead>
         <TableBody>
+          {data.length === 0 && (
+            <Typography align="center" style={{ marginTop: 100 }}>
+              We did not find anything. Try another name
+            </Typography>
+          )}
           {data.map((item: any) => {
             return (
               <TableRow key={item.id}>

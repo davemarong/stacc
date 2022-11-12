@@ -15,6 +15,7 @@ function App() {
   const [company, setCompany] = useState<any>();
   // !!
 
+  const [searchType, setSearchType] = useState<string>("person");
   const [allPersons, setAllPersons] = useState<any>([]);
   const [allCompanies, setAllCompanies] = useState<any>();
 
@@ -29,13 +30,13 @@ function App() {
   // !!
 
   // CUSTOM HOOK
-  const [data, loading, fetchData] = useFetchData(fetchProps);
+  const [data, loading, fetchData] = useFetchData({ searchType: searchType });
 
   // RETURN
   return (
     <>
       <Header>Know Your Customer</Header>
-      <Tabs_Meny />
+      <Tabs_Meny setSearchType={setSearchType} searchType={searchType} />
       <InputField fetchData={fetchData}>Search</InputField>
       <Split_Screen_1to3>
         <Person_List allPersons={allPersons} setAllPersons={setAllPersons} />

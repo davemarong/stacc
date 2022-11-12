@@ -10,32 +10,27 @@ import { useState } from "react";
 // UTILS
 
 // DATA
-import { pepUrl } from "../../constants/constants";
+import { pepUrl, rollerUrl, tabsValueEnum } from "../../constants/constants";
 
 // LIBRARY
 import axios from "axios";
 
 // TYPE/INTERFACE
 interface Props {
-  setPerson: any;
-  setCompany: any;
-  setAllPersons: any;
-  setAllCompanies: any;
+  searchType: string;
 }
 // FUNCTIONAL COMPONENT
-export const useFetchData = ({
-  setPerson,
-  setCompany,
-  setAllPersons,
-  setAllCompanies,
-}: Props) => {
+export const useFetchData = ({ searchType }: Props) => {
   // STATE
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<any>(false);
+  let baseUrl: string;
+  if (searchType === "person") baseUrl = pepUrl;
+  if (searchType === "roller") baseUrl = rollerUrl;
 
   const fetchData = async (query: string) => {
     setLoading(true);
-    const response = await axios.get(pepUrl + query);
+    const response = await axios.get(baseUrl + query);
     console.log(response.data);
     setData(response.data.hits);
     setLoading(false);
