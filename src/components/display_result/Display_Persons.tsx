@@ -28,7 +28,7 @@ interface Props {
   loading: boolean;
 }
 // FUNCTIONAL COMPONENT
-export const Display_Result = ({
+export const Display_Persons = ({
   data,
   setAllPersons,
   allPersons,
