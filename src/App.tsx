@@ -22,6 +22,7 @@ function App() {
   const [data, loading, fetchData] = useFetchData({ searchType: searchType });
 
   let DisplayResult: any;
+  // These two components are very similar. Create a more reusable comp? Or props?
   if (searchType === "person") {
     DisplayResult = Display_Persons;
   } else if (searchType === "roller") {
@@ -41,12 +42,6 @@ function App() {
           allPersons={allPersons}
           loading={loading}
         />
-        {/* <Display_Persons
-          data={data}
-          setAllPersons={setAllPersons}
-          allPersons={allPersons}
-          loading={loading}
-        /> */}
       </Split_Screen_1to3>
     </>
   );
