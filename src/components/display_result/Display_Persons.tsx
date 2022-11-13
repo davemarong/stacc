@@ -29,15 +29,15 @@ import {
 
 interface Props {
   data: Person;
-  setAllPersons: (value: Person) => void;
-  allPersons: Person;
+  setPersonList: (value: Person) => void;
+  personList: Person;
   loading: boolean;
 }
 // FUNCTIONAL COMPONENT
 export const Display_Persons = ({
   data,
-  setAllPersons,
-  allPersons,
+  setPersonList,
+  personList,
   loading,
 }: Props) => {
   // STATE
@@ -47,7 +47,7 @@ export const Display_Persons = ({
   const handleAddPersonToList = (id: string, data: Person) => {
     const person = data.filter((item: PersonObject) => item.id === id)[0];
     // check if person exists
-    setAllPersons([...allPersons, person]);
+    setPersonList([...personList, person]);
   };
   if (loading) {
     return (

@@ -28,15 +28,15 @@ import {
 // TYPE/INTERFACE
 interface Props {
   data: any;
-  setAllPersons: (value: Person) => void;
-  allPersons: Person;
+  setPersonList: (value: Person) => void;
+  personList: Person;
   loading: boolean;
 }
 // FUNCTIONAL COMPONENT
 export const Display_Roller = ({
   data,
-  setAllPersons,
-  allPersons,
+  setPersonList,
+  personList,
   loading,
 }: Props) => {
   // STATE

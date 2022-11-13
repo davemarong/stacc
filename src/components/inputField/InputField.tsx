@@ -5,11 +5,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 type Props = {
-  children: ReactNode;
-  fetchData: (value: string) => {};
+  children: any;
+  label: string;
 };
 
-export const InputField = ({ children, fetchData }: Props) => {
+export const InputField = ({ children, label }: Props) => {
   const [userInput, setUserInput] = useState("");
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +21,7 @@ export const InputField = ({ children, fetchData }: Props) => {
         <Grid item xs={10}>
           <TextField
             id="outlined-basic"
-            label={children}
+            label={label}
             variant="outlined"
             value={userInput}
             onChange={handleUserInput}
@@ -30,14 +30,9 @@ export const InputField = ({ children, fetchData }: Props) => {
           />
         </Grid>
         <Grid item xs={2}>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              fetchData(userInput);
-            }}
-          >
-            Search
-          </Button>
+          {React.cloneElement(children, {
+            query: userInput,
+          })}
         </Grid>
       </Grid>
     </Container>

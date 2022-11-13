@@ -19,24 +19,24 @@ import Typography from "@mui/material/Typography";
 
 // TYPE/INTERFACE
 interface Props {
-  allPersons: any;
-  setAllPersons: any;
+  personList: any;
+  setPersonList: any;
 }
 // FUNCTIONAL COMPONENT
-export const Person_List = ({ allPersons, setAllPersons }: Props) => {
+export const Person_List = ({ personList, setPersonList }: Props) => {
   // STATE
 
   // FUNCTIONS
   const handleRemovePersonFromList = (id: string) => {
-    const listWithoutPerson = allPersons.filter((item: any) => item.id !== id);
-    setAllPersons([...listWithoutPerson]);
+    const listWithoutPerson = personList.filter((item: any) => item.id !== id);
+    setPersonList([...listWithoutPerson]);
   };
 
   // RETURN
   return (
     // Could have reused the "display_result" comp, with some parameters, but did this as its easier to add more functionality to cards
     <Container maxWidth="sm">
-      {allPersons.map((item: any) => {
+      {personList.map((item: any) => {
         return (
           <Card key={item.id} style={{ margin: "20px 0" }}>
             <CardContent>

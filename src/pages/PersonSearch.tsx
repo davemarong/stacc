@@ -16,7 +16,7 @@ import { Person_List } from "../components/person_list/Person_List";
 import { Split_Screen_1to3 } from "../components/split_screen_1to3/Split_Screen_1to3";
 
 // CUSTOM HOOKS
-import { useFetchData } from "../components/customHooks/useFetchData";
+import { useFetchDataPerson } from "../components/customHooks/useFetchDataPerson";
 
 // ROUTING
 import { Routes, Route } from "react-router-dom";
@@ -25,28 +25,20 @@ import { Routes, Route } from "react-router-dom";
 
 // TYPE/INTERFACE
 import { Person } from "../types/Types";
+import { ButtonMui } from "../components/button/ButtonMui";
 
 interface Props {
-  searchType: string;
-  setAllPersons: (value: Person) => void;
-  allPersons: Person;
-  setSearchType: (value: string) => void;
+  setPersonList: (value: Person) => void;
+  personList: Person;
 }
 // FUNCTIONAL COMPONENT
-export const PersonSearch = ({
-  searchType,
-  setSearchType,
-  allPersons,
-  setAllPersons,
-}: Props) => {
+export const PersonSearch = ({ personList, setPersonList }: Props) => {
   // STATE
-  // const [searchType, setSearchType] = useState<string>("person");
-  // const [allPersons, setAllPersons] = useState<Person | []>([]);
 
   // PROPS OBJECT
 
   // CUSTOM HOOK
-  const [data, loading, fetchData] = useFetchData({ searchType: searchType });
+  const [data, loading, fetchDataPerson] = useFetchDataPerson();
 
   // FUNCTIONS
 
@@ -54,13 +46,15 @@ export const PersonSearch = ({
   return (
     <>
       <Header>PEP search on a person</Header>
-      <InputField fetchData={fetchData}>Search</InputField>
+      <InputField label="Search by a name...">
+        <ButtonMui func={fetchDataPerson}>Add to list</ButtonMui>
+      </InputField>
       <Split_Screen_1to3>
-        <Person_List allPersons={allPersons} setAllPersons={setAllPersons} />
+        <Person_List personList={personList} setPersonList={setPersonList} />
         <Display_Persons
           data={data}
-          setAllPersons={setAllPersons}
-          allPersons={allPersons}
+          setPersonList={setPersonList}
+          personList={personList}
           loading={loading}
         />
       </Split_Screen_1to3>

@@ -4,13 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { tabs_items } from "./Tabs_Items";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { pepUrl, rollerUrl, tabsValueEnum } from "../../constants/constants";
+import { tabsValueEnum } from "../../constants/constants";
 
-interface Props {
-  setSearchType: (value: string) => void;
-  searchType: string;
-}
-export const Tabs_Meny = ({ setSearchType, searchType }: Props) => {
+export const Tabs_Meny = () => {
   // STATE
   const [value, setValue] = useState(0);
 
@@ -22,10 +18,8 @@ export const Tabs_Meny = ({ setSearchType, searchType }: Props) => {
     setValue(newValue);
     if (newValue === tabsValueEnum.Person) {
       navigate("/PersonSearch");
-      setSearchType("person");
     } else if (newValue === tabsValueEnum.Roller) {
       navigate("/CompanySearch");
-      setSearchType("roller");
     }
   };
   // RETURN

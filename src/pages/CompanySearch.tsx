@@ -14,9 +14,10 @@ import { Tabs_Meny } from "../components/tabs_meny/Tabs_Meny";
 import { Person_List } from "../components/person_list/Person_List";
 import { Split_Screen_1to3 } from "../components/split_screen_1to3/Split_Screen_1to3";
 import { Display_Roller } from "../components/display_result/Display_Roller";
+import { ButtonMui } from "../components/button/ButtonMui";
 
 // CUSTOM HOOKS
-import { useFetchData } from "../components/customHooks/useFetchData";
+import { useFetchDataCompany } from "../components/customHooks/useFetchDataCompany";
 
 // ROUTING
 import { Routes, Route } from "react-router-dom";
@@ -27,26 +28,15 @@ import { Routes, Route } from "react-router-dom";
 import { Person } from "../types/Types";
 
 interface Props {
-  searchType: string;
-  setAllPersons: (value: Person) => void;
-  allPersons: Person;
-  setSearchType: (value: string) => void;
+  setPersonList: (value: Person) => void;
+  personList: Person;
 }
 // FUNCTIONAL COMPONENT
-export const CompanySearch = ({
-  searchType,
-  setSearchType,
-  allPersons,
-  setAllPersons,
-}: Props) => {
+export const CompanySearch = ({ personList, setPersonList }: Props) => {
   // STATE
-  // const [searchType, setSearchType] = useState<string>("person");
-  // const [allPersons, setAllPersons] = useState<Person | []>([]);
-
-  // PROPS OBJECT
 
   // CUSTOM HOOK
-  const [data, loading, fetchData] = useFetchData({ searchType: searchType });
+  const [data, loading, fetchCompanyData] = useFetchDataCompany();
 
   // FUNCTIONS
 
@@ -54,13 +44,15 @@ export const CompanySearch = ({
   return (
     <>
       <Header>PEP search on a company</Header>
-      <InputField fetchData={fetchData}>Search</InputField>
+      <InputField label="Search by a Company...">
+        <ButtonMui func={fetchCompanyData}>Add to list</ButtonMui>
+      </InputField>
       <Split_Screen_1to3>
-        <Person_List allPersons={allPersons} setAllPersons={setAllPersons} />
+        <Person_List personList={personList} setPersonList={setPersonList} />
         <Display_Roller
           data={data}
-          setAllPersons={setAllPersons}
-          allPersons={allPersons}
+          setPersonList={setPersonList}
+          personList={personList}
           loading={loading}
         />
       </Split_Screen_1to3>

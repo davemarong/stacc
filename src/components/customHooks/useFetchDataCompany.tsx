@@ -10,22 +10,15 @@ import { useState } from "react";
 // UTILS
 
 // DATA
-import {
-  pepUrl,
-  rollerUrl,
-  enheterUrl,
-  tabsValueEnum,
-} from "../../constants/constants";
+import { rollerUrl, enheterUrl } from "../../constants/constants";
 
 // LIBRARY
 import axios from "axios";
 
 // TYPE/INTERFACE
-interface Props {
-  searchType: string;
-}
+
 // FUNCTIONAL COMPONENT
-export const useFetchData = ({ searchType }: Props) => {
+export const useFetchDataCompany = () => {
   // STATE
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -55,28 +48,9 @@ export const useFetchData = ({ searchType }: Props) => {
       setLoading(false);
     }
   };
-  const fetchPersonData = async (query: string) => {
-    setLoading(true);
-    try {
-      const response = await axios.get(pepUrl + query);
-      console.log(response.data);
-      setData(response.data.hits);
-      setLoading(false);
-    } catch (error: any) {
-      console.log(error);
-      // Set data to show a error message
-      setLoading(false);
-    }
-  };
-  const fetchData = async (query: string) => {
-    if (searchType === "person") {
-      fetchPersonData(query);
-    } else if (searchType === "roller") {
-      fetchCompanyData(query);
-    }
-  };
+
   // FUNCTIONS
 
   // RETURN
-  return [data, loading, fetchData];
+  return [data, loading, fetchCompanyData];
 };
