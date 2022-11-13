@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 type Props = {
   children: ReactNode;
-  fetchData: (query: string) => {};
+  fetchData: (value: string) => {};
 };
 
 export const InputField = ({ children, fetchData }: Props) => {

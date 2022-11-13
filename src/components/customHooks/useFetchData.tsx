@@ -28,14 +28,14 @@ interface Props {
 export const useFetchData = ({ searchType }: Props) => {
   // STATE
   const [data, setData] = useState<any>([]);
-  const [loading, setLoading] = useState<any>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchCompanyData = async (query: string) => {
     setLoading(true);
     try {
       const responseRoller = await axios.get(rollerUrl + query);
       const responseInfo = await axios.get(enheterUrl + query);
-      console.log(responseInfo.data.forretningsadresse.landkode);
+      console.log(responseInfo.data);
       // A org number can return multiple items, then this wil not work as intended
       const personsFromCompany = responseRoller.data[0].roller.map(
         (item: any) => {

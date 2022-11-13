@@ -13,6 +13,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CircularProgress from "@mui/material/CircularProgress";
+import {
+  Person,
+  PersonObject,
+  PersonsFromCompanyObject,
+} from "../../types/Types";
 
 // COMPONENTS
 
@@ -23,8 +28,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 // TYPE/INTERFACE
 interface Props {
   data: any;
-  setAllPersons: any;
-  allPersons: any;
+  setAllPersons: (value: Person) => void;
+  allPersons: Person;
   loading: boolean;
 }
 // FUNCTIONAL COMPONENT
@@ -37,6 +42,7 @@ export const Display_Roller = ({
   // STATE
 
   // FUNCTIONS
+  console.log(data);
 
   // RETURN
   if (loading) {
@@ -68,9 +74,9 @@ export const Display_Roller = ({
                 We did not find anything. Try another name
               </Typography>
             )}
-            {data.map((item: any) => {
+            {data.map((item: PersonsFromCompanyObject) => {
               return (
-                <TableRow key={item.id}>
+                <TableRow key={item.name + item.companyName}>
                   <TableCell>
                     <Typography>{item.name}</Typography>
                   </TableCell>

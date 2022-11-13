@@ -6,7 +6,7 @@ import Tab from "@mui/material/Tab";
 import { pepUrl, rollerUrl, tabsValueEnum } from "../../constants/constants";
 
 interface Props {
-  setSearchType: any;
+  setSearchType: (value: string) => void;
   searchType: string;
 }
 export const Tabs_Meny = ({ setSearchType, searchType }: Props) => {

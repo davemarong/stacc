@@ -21,10 +21,16 @@ import CircularProgress from "@mui/material/CircularProgress";
 // DATA
 
 // TYPE/INTERFACE
+import {
+  Person,
+  PersonObject,
+  PersonsFromCompanyObject,
+} from "../../types/Types";
+
 interface Props {
-  data: any;
-  setAllPersons: any;
-  allPersons: any;
+  data: Person;
+  setAllPersons: (value: Person) => void;
+  allPersons: Person;
   loading: boolean;
 }
 // FUNCTIONAL COMPONENT
@@ -38,8 +44,8 @@ export const Display_Persons = ({
 
   // FUNCTIONS
   // Could have used index instead, faster but could be a problem in the future
-  const handleAddPersonToList = (id: string, data: any) => {
-    const person = data.filter((item: any) => item.id === id)[0];
+  const handleAddPersonToList = (id: string, data: Person) => {
+    const person = data.filter((item: PersonObject) => item.id === id)[0];
     // check if person exists
     setAllPersons([...allPersons, person]);
   };
@@ -72,7 +78,7 @@ export const Display_Persons = ({
               We did not find anything. Try another name
             </Typography>
           )}
-          {data.map((item: any) => {
+          {data.map((item: PersonObject) => {
             return (
               <TableRow key={item.id}>
                 <TableCell>
