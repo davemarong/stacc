@@ -1,7 +1,7 @@
 // IMPORT
 
 // REACT
-import { ReactNode } from "react";
+
 // MUI
 import Grid from "@mui/material/Grid";
 

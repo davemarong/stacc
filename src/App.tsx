@@ -2,10 +2,9 @@
 // IMPORT
 
 // REACT
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState } from "react";
 
 // MUI
-import Button from "@mui/material/Button";
 
 // COMPONENTS
 import { Tabs_Meny } from "./components/tabs_meny/Tabs_Meny";

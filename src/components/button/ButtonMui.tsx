@@ -15,11 +15,15 @@ import Button from "@mui/material/Button";
 // TYPE/INTERFACE
 type Props = {
   children: ReactNode;
-  func: (value: string) => void;
+  func?: any;
   query?: string;
 };
 // FUNCTIONAL COMPONENT
-export const ButtonMui = ({ children, func, query = "" }: Props) => {
+export const ButtonMui = ({
+  children,
+  func = () => console.log("optional functions"),
+  query = "",
+}: Props) => {
   // STATE
 
   // FUNCTIONS
@@ -28,6 +32,7 @@ export const ButtonMui = ({ children, func, query = "" }: Props) => {
   return (
     <Button
       variant="outlined"
+      color="secondary"
       onClick={() => {
         func(query);
       }}

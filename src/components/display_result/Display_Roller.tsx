@@ -13,11 +13,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CircularProgress from "@mui/material/CircularProgress";
-import {
-  Person,
-  PersonObject,
-  PersonsFromCompanyObject,
-} from "../../types/Types";
 
 // COMPONENTS
 
@@ -26,6 +21,11 @@ import {
 // DATA
 
 // TYPE/INTERFACE
+import {
+  Person,
+  PersonObject,
+  PersonsFromCompanyObject,
+} from "../../types/Types";
 interface Props {
   data: any;
   setPersonList: (value: Person) => void;
@@ -42,7 +42,6 @@ export const Display_Roller = ({
   // STATE
 
   // FUNCTIONS
-  console.log(data);
 
   // RETURN
   if (loading) {

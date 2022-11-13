@@ -1,6 +1,7 @@
 // IMPORT
 
 // REACT
+import React from "react";
 
 // MUI
 import Button from "@mui/material/Button";
