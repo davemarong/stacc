@@ -19,12 +19,15 @@ import { Display_Roller } from "./components/display_result/Display_Roller";
 // CUSTOM HOOKS
 import { useFetchData } from "./components/customHooks/useFetchData";
 
-// UTILS
+// ROUTING
+import { Routes, Route } from "react-router-dom";
 
 // DATA
 
 // TYPE/INTERFACE
 import { Person } from "./types/Types";
+import { PersonSearch } from "./pages/PersonSearch";
+import { CompanySearch } from "./pages/CompanySearch";
 
 // FUNCTIONAL COMPONENT
 function App() {
@@ -33,32 +36,26 @@ function App() {
   const [allPersons, setAllPersons] = useState<Person | []>([]);
 
   // PROPS OBJECT
-
-  // CUSTOM HOOK
-  const [data, loading, fetchData] = useFetchData({ searchType: searchType });
-
-  let DisplayResult: any;
-  // These two components are very similar. Create a more reusable comp? Or props?
-  if (searchType === "person") {
-    DisplayResult = Display_Persons;
-  } else if (searchType === "roller") {
-    DisplayResult = Display_Roller;
-  }
+  const RouteProps = {
+    searchType: searchType,
+    setSearchType: setSearchType,
+    allPersons: allPersons,
+    setAllPersons: setAllPersons,
+  };
   // RETURN
   return (
     <>
-      <Header>Know Your Customer</Header>
       <Tabs_Meny setSearchType={setSearchType} searchType={searchType} />
-      <InputField fetchData={fetchData}>Search</InputField>
-      <Split_Screen_1to3>
-        <Person_List allPersons={allPersons} setAllPersons={setAllPersons} />
-        <DisplayResult
-          data={data}
-          setAllPersons={setAllPersons}
-          allPersons={allPersons}
-          loading={loading}
+      <Routes>
+        <Route
+          path="/PersonSearch"
+          element={<PersonSearch {...RouteProps} />}
         />
-      </Split_Screen_1to3>
+        <Route
+          path="/CompanySearch"
+          element={<CompanySearch {...RouteProps} />}
+        />
+      </Routes>
     </>
   );
 }
