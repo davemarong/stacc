@@ -1,6 +1,6 @@
 # Stacc code challenge
 
-React.js and Typescript for the coding, and MUI for the styling.
+React.js og Typescript til koding, og MUI for styling.
 
 ## Oppgavebeskrivelse
 

@@ -14,7 +14,7 @@ import { CompanySearch } from "./pages/CompanySearch";
 // CUSTOM HOOKS
 
 // ROUTING
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // DATA
 
@@ -44,6 +44,7 @@ function App() {
           path="/CompanySearch"
           element={<CompanySearch {...RouteProps} />}
         />
+        <Route path="*" element={<Navigate to="/PersonSearch" replace />} />
       </Routes>
     </>
   );
